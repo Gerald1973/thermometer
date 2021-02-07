@@ -1,0 +1,26 @@
+{
+  "cmake.configureOnOpen": false,
+  "cmake.statusbar.advanced": {
+    "debug" : {
+      "visibility": "hidden"
+              },    "launch" : {
+      "visibility": "hidden"
+               },
+    "build" : {
+      "visibility": "hidden"
+               },
+    "buildTarget" : {
+      "visibility": "hidden"
+               },
+    },
+    "files.associations": {
+      "clocks.h": "c",
+      "xosc.h": "c",
+      "stdlib.h": "c",
+      "vreg.h": "c",
+      "stdio.h": "c",
+      "atomic": "cpp",
+      "cstdint": "cpp",
+      "adc.h": "c"
+    },
+}
