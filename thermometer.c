@@ -4,7 +4,7 @@
 #include "hardware/gpio.h"
 
 /**
- * @brief mapping between th esegment and the used GPIO
+ * @brief mapping between the segment and the used GPIO
  * 
  */
 const uint A = 11;
@@ -164,25 +164,49 @@ static inline void build9()
     gpio_put(DP, 1);
 }
 
-static inline void buildFigure(int figure, int dp){
-    switch (figure) {
-        case 0: build0(); break;
-        case 1: build1(); break;
-        case 2: build2(); break;
-        case 3: build3(); break;
-        case 4: build4(); break;
-        case 5: build5(); break;
-        case 6: build6(); break;
-        case 7: build7(); break;
-        case 8: build8(); break;
-        case 9: build9(); break;
+static inline void buildFigure(int figure, int dp)
+{
+    switch (figure)
+    {
+    case 0:
+        build0();
+        break;
+    case 1:
+        build1();
+        break;
+    case 2:
+        build2();
+        break;
+    case 3:
+        build3();
+        break;
+    case 4:
+        build4();
+        break;
+    case 5:
+        build5();
+        break;
+    case 6:
+        build6();
+        break;
+    case 7:
+        build7();
+        break;
+    case 8:
+        build8();
+        break;
+    case 9:
+        build9();
+        break;
     }
-    if (dp){
+    if (dp)
+    {
         gpio_put(DP, 0);
     }
 }
 
-static inline float getTemperature(){
+static inline float getTemperature()
+{
     uint16_t raw = adc_read();
     const float conversion_factor = 3.3f / (1 << 12);
     float voltage = raw * conversion_factor;
@@ -205,46 +229,48 @@ int main()
     int tmp = 0;
     while (1 == 1)
     {
-        switch (digitNumber) {
-            case 3:
-                tmp = temperature / 10;
-                gpio_put(0,0);
-                gpio_put(1,0);
-                gpio_put(2,0);
-                gpio_put(3,1);
-                buildFigure(tmp,0);
-                break;
-            case 2:
-                tmp = (int) temperature % 10;
-                gpio_put(0,0);
-                gpio_put(1,0);
-                gpio_put(2,1);
-                gpio_put(3,0);
-                buildFigure(tmp,1);
-                break;
-            case 1:
-                tmp = (int) (temperature * 10) % 10;
-                gpio_put(0,0);
-                gpio_put(1,1);
-                gpio_put(2,0);
-                gpio_put(3,0);
-                buildFigure(tmp,0);
-                break;
-            case 0:
-                tmp = (int) (temperature * 100) % 10;
-                gpio_put(0,1);
-                gpio_put(1,0);
-                gpio_put(2,0);
-                gpio_put(3,0);
-                buildFigure(tmp,0);
-                break;
-
+        switch (digitNumber)
+        {
+        case 3:
+            tmp = temperature / 10;
+            gpio_put(0, 0);
+            gpio_put(1, 0);
+            gpio_put(2, 0);
+            gpio_put(3, 1);
+            buildFigure(tmp, 0);
+            break;
+        case 2:
+            tmp = (int)temperature % 10;
+            gpio_put(0, 0);
+            gpio_put(1, 0);
+            gpio_put(2, 1);
+            gpio_put(3, 0);
+            buildFigure(tmp, 1);
+            break;
+        case 1:
+            tmp = (int)(temperature * 10) % 10;
+            gpio_put(0, 0);
+            gpio_put(1, 1);
+            gpio_put(2, 0);
+            gpio_put(3, 0);
+            buildFigure(tmp, 0);
+            break;
+        case 0:
+            tmp = (int)(temperature * 100) % 10;
+            gpio_put(0, 1);
+            gpio_put(1, 0);
+            gpio_put(2, 0);
+            gpio_put(3, 0);
+            buildFigure(tmp, 0);
+            break;
         }
         digitNumber--;
         refreshTemperature++;
-        if (digitNumber < 0){
+        if (digitNumber < 0)
+        {
             digitNumber = 3;
-            if (refreshTemperature == 100){
+            if (refreshTemperature == 100)
+            {
                 temperature = getTemperature();
                 refreshTemperature = 0;
             }

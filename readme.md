@@ -14,6 +14,12 @@ The Raspberry PI Pico C/C++ SDK:
 
 ### Documentation
 
+### View log debug
+
+```bash
+sudo minicom -b 115200 -o -D /dev/ttyACM0
+```
+
 ### Reminder debug pins connection to the raspberry
 
 ***If you experience some connection problem, verify that your Raspberry Pi Pico is connected directly to your Raspberry Pi, not the breadboard.***
