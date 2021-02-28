@@ -1,4 +1,4 @@
-./build/**
-./cMakeFiles/**
-./generated/**
-./pico_sdk/**
+/build/**
+/cMakeFiles/**
+/generated/**
+/pico_sdk/**
