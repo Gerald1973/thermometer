@@ -14,6 +14,18 @@ The Raspberry PI Pico C/C++ SDK:
 
 ### Documentation
 
+### Reminder debug pins connection to the raspberry
+
+***If you experience some connection problem, verify that your Raspberry Pi Pico is connected directly to your Raspberry Pi, not the breadboard.***
+
+| Raspberry Pi     | Raspberry Pi Pico |
+|------------------|-------------------|
+| GND (pin 20)     | SWD GND           |
+| GPIO 24 (pin 18) | SWDIO             |
+| GPIO 25 (pin 22) | SWCLK             |
+
+#### Connection from 7 segments to the Raspberry Pi Pico
+
 | 7 segments (pin) | LED      | GPIO on the RP2040 |
 |-----------------:|----------|-------------------:|
 |   1              |  E       |  4                 |
@@ -28,6 +40,8 @@ The Raspberry PI Pico C/C++ SDK:
 |  10              |  F       | 10                 |
 |  11              |  A       | 11                 |
 |  12              |  Digit 1 | 12                 |
+
+#### One led description
 
 ```led
        A
